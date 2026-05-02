@@ -1,3 +1,12 @@
+/*
+ * Circular Linked List Music Player
+ * Features:
+ * - Add Song
+ * - Play Next Song
+ * - Delete Song
+ * - Display Playlist
+ */
+
 #include <iostream>
 #include <string>
 using namespace std;
