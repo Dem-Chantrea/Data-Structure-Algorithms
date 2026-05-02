@@ -1,9 +1,9 @@
+/*
+ * Stack Implementation using Linked List 
+ */
+
 #include <iostream>
 using namespace std;
-
-/*
- * Stack Implementation using Linked List (OOP Version)
- */
 
 class Stack {
 private:
