@@ -1,46 +1,96 @@
 #include <iostream>
 using namespace std;
 
-struct Node {
-    int data;
-    Node* next;
+/*
+ * Stack Implementation using Linked List (OOP Version)
+ */
+
+class Stack {
+private:
+    struct Node {
+        int data;
+        Node* next;
+
+        Node(int value) {
+            data = value;
+            next = NULL;
+        }
+    };
+
+    Node* top;
+
+public:
+    Stack() {
+        top = NULL;
+    }
+
+    // Push
+    void push(int value) {
+        Node* newNode = new Node(value);
+        newNode->next = top;
+        top = newNode;
+    }
+
+    // Pop
+    int pop() {
+        if (!top) {
+            cout << "Stack Underflow\n";
+            return -1;
+        }
+
+        Node* temp = top;
+        int value = temp->data;
+        top = top->next;
+        delete temp;
+
+        return value;
+    }
+
+    // Peek
+    int peek() {
+        if (!top) {
+            cout << "Stack is empty\n";
+            return -1;
+        }
+        return top->data;
+    }
+
+    // Display
+    void display() {
+        if (!top) {
+            cout << "Stack is empty\n";
+            return;
+        }
+
+        Node* temp = top;
+        while (temp) {
+            cout << temp->data << endl;
+            temp = temp->next;
+        }
+    }
+
+    // Destructor 
+    ~Stack() {
+        while (top) {
+            Node* temp = top;
+            top = top->next;
+            delete temp;
+        }
+    }
 };
-
-Node* top = NULL;
-
-// Push
-void push(int value) {
-    Node* newNode = new Node{value, top};
-    top = newNode;
-}
-
-// Pop
-void pop() {
-    if (!top) {
-        cout << "Underflow\n";
-        return;
-    }
-    Node* temp = top;
-    cout << "Popped: " << temp->data << endl;
-    top = top->next;
-    delete temp;
-}
-
-// Peek
-void peek() {
-    if (!top) {
-        cout << "Empty\n";
-        return;
-    }
-    cout << "Top: " << top->data << endl;
-}
-
 int main() {
-    push(5);
-    push(10);
-    push(15);
+    Stack s;
 
-    peek();
-    pop();
-    peek();
+    s.push(5);
+    s.push(10);
+    s.push(15);
+
+    cout << "Top: " << s.peek() << endl;
+
+    cout << "Popped: " << s.pop() << endl;
+
+    cout << "After pop:\n";
+    s.display();
+
+    return 0;
 }
