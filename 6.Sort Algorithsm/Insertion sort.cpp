@@ -1,3 +1,8 @@
+// Insertion Sort
+// Idea: Insert each element into its correct position
+// Time Complexity: O(n^2) worst, O(n) best
+// Space Complexity: O(1)
+
 #include <iostream>
 using namespace std;
 
