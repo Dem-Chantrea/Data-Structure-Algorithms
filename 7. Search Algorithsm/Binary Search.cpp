@@ -1,57 +1,65 @@
+/*
+    Program: Sorting + Binary Search
+    --------------------------------
+    - Uses STL sort (O(n log n))
+    - Uses Binary Search (O(log n))
+    - Total Complexity: O(n log n)
+
+    Concepts:
+    - Efficient sorting
+    - Divide and conquer search
+*/
+
 #include <iostream>
+#include <vector>
+#include <algorithm>
 using namespace std;
 
+
+// Binary Search Function
+int binarySearch(const vector<int>& arr, int key) {
+    int left = 0;
+    int right = arr.size() - 1;
+
+    while (left <= right) {
+        // Prevent overflow
+        int mid = left + (right - left) / 2;
+
+        if (arr[mid] == key)
+            return mid;
+        else if (arr[mid] < key)
+            left = mid + 1;
+        else
+            right = mid - 1;
+    }
+
+    return -1; // Not found
+}
+
 int main() {
-    int arr[] = {5, 2, 9, 1, 3}; // MUST be sorted
-    int n = 5;
+    vector<int> arr = {5, 2, 9, 1, 3};
     int key;
 
-    
-    cout << "Before Sorting: ";
-    for (int i = 0; i < n; i++) {
-        cout << arr[i] << " ";
-    }
-    
-    for (int i = 0; i < n-1; i++) {
-        for (int j = 0; j < n-i-1; j++) {
+    // Display original array
+    cout << "Original Array: ";
+    for (int num : arr)
+        cout << num << " ";
 
-            if (arr[j] > arr[j+1]) {
-                // swap
-                int temp = arr[j];
-                arr[j] = arr[j+1];
-                arr[j+1] = temp;
-            }
+    // Efficient Sorting (O(n log n))
+    sort(arr.begin(), arr.end());
+    cout << "\nSorted Array: ";
+    for (int num : arr)
+        cout << num << " ";
 
-        }
-    }
-	
-    cout << "\nSorted: ";
-    for (int i = 0; i < n; i++)
-        cout << arr[i] << " ";
-    
+    // Input value to search
     cout << "\nEnter value to search: ";
     cin >> key;
 
-    int left = 0, right = n - 1;
-    int found = -1;
+    // Perform binary search
+    int index = binarySearch(arr, key);
 
-    while (left <= right) {
-        int mid = (left + right) / 2;
-
-        if (arr[mid] == key) {
-            found = mid;
-            break;
-        }
-        else if (arr[mid] < key) {
-            left = mid + 1;
-        }
-        else {
-            right = mid - 1;
-        }
-    }
-
-    if (found != -1)
-        cout << "Found at index " << found << endl;
+    if (index != -1)
+        cout << "Found at index " << index << endl;
     else
         cout << "Not Found" << endl;
 
