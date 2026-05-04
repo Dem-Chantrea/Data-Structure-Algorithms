@@ -1,3 +1,8 @@
+// Quick Sort
+// Idea: Pick a pivot and partition array into smaller/larger elements
+// Time Complexity: O(n log n) average, O(n^2) worst
+// Space Complexity: O(log n) (recursion)
+
 #include <iostream>
 using namespace std;
 
