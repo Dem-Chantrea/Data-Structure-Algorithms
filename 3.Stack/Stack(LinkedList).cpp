@@ -1,6 +1,7 @@
-/*
- * Stack Implementation using Linked List 
- */
+// Stack (Linked List)
+// Operations: push, pop (LIFO)
+// Time Complexity: O(1)
+// Space Complexity: O(n)
 
 #include <iostream>
 using namespace std;
