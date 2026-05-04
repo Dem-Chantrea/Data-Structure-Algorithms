@@ -1,3 +1,7 @@
+// Linear Search
+// Time Complexity: O(n)
+// Works on unsorted arrays
+
 #include <iostream>
 using namespace std;
 
