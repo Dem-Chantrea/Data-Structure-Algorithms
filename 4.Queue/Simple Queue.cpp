@@ -1,55 +1,76 @@
 #include <iostream>
 using namespace std;
 
-#define MAX 5
+/*
+ * Queue Implementation using Array (OOP)
+ */
 
-int queueArr[MAX];
-int front = -1, rear = -1;
+class Queue {
+private:
+    int* arr;
+    int front;
+    int rear;
+    int capacity;
 
-// Enqueue
-void enqueue(int value) {
-    if (rear == MAX - 1) {
-        cout << "Queue Overflow\n";
-        return;
+public:
+    Queue(int size) {
+        capacity = size;
+        arr = new int[capacity];
+        front = 0;
+        rear = -1;
     }
 
-    if (front == -1) front = 0;
-
-    queueArr[++rear] = value;
-    cout <<endl;
-}
-
-// Dequeue
-void dequeue() {
-    if (front == -1 || front > rear) {
-        cout << "Queue Underflow\n";
-        return;
+    // Enqueue
+    void enqueue(int value) {
+        if (rear == capacity - 1) {
+            cout << "Queue Overflow\n";
+            return;
+        }
+        arr[++rear] = value;
     }
 
-    cout << "Removed: " << queueArr[front++] << endl;
-}
+    // Dequeue
+    int dequeue() {
+        if (front > rear) {
+            cout << "Queue Underflow\n";
+            return -1;
+        }
+        return arr[front++];
+    }
 
-// Display
-void display() {
-    if (front == -1 || front > rear) {
-        cout << "Empty queue\n";
-        return;
+    // Display
+    void display() {
+        if (front > rear) {
+            cout << "Queue is empty\n";
+            return;
+        }
+
+        for (int i = front; i <= rear; i++) {
+            cout << arr[i] << " ";
+        }
+        cout << endl;
     }
-    cout << "Queue: ";
-    for (int i = front; i <= rear; i++) {
-        cout << queueArr[i] << " ";
+
+    ~Queue() {
+        delete[] arr;
     }
-    cout << endl;
-}
+};
 
 // Main
 int main() {
-    enqueue(10);
-    enqueue(20);
-    enqueue(30);
+    Queue q(5);
 
-    display();
+    q.enqueue(10);
+    q.enqueue(20);
+    q.enqueue(30);
 
-    dequeue();
-    display();
+    cout << "Queue: ";
+    q.display();
+
+    cout << "Dequeued: " << q.dequeue() << endl;
+
+    cout << "After dequeue: ";
+    q.display();
+
+    return 0;
 }
