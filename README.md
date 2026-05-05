@@ -6,7 +6,7 @@ This repository contains implementations of fundamental Data Structures and Algo
 
 ## 📚 Topics Covered
  - Array Operations
- - Linked List (Singly & Doubly)
+ - Linked List (Singly , Doubly , Circular , Circular Doubly)
  - Stack (Array & Linked List Implementation)
  - Queue (Linear & Circular Queue)
  - Trees (Binary Tree, BST Traversals)
