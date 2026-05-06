@@ -1,9 +1,25 @@
+/*
+    Queue (Array Implementation - OOP)
+    Data Structure: Linear Queue (FIFO - First In First Out)
+    
+    Key Concept: Elements are inserted at rear and removed from front.
+    
+    Time Complexity:
+    enqueue() → O(1)
+    dequeue() → O(1)
+    display() → O(n)
+    
+    Space Complexity: O(n)
+
+    Conditions:
+    Overflow → rear == capacity - 1
+    Underflow → front > rear
+*/
+
 #include <iostream>
 using namespace std;
 
-/*
- * Queue Implementation using Array (OOP)
- */
+
 
 class Queue {
 private:
