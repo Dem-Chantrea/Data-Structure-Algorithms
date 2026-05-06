@@ -1,53 +1,87 @@
+/*
+ * Stack Implementation using Array (OOP Version)
+ * Features:
+ * - Push
+ * - Pop
+ * - Peek
+ * - Display
+ */
+
 #include <iostream>
 using namespace std;
 
-#define MAX 5
+class Stack {
+private:
+    int* arr;
+    int top;
+    int capacity;
 
-int stackArr[MAX];
-int top = -1;
-
-// Push
-void push(int value) {
-    if (top == MAX - 1) {
-        cout << "Stack Overflow\n";
-        return;
+public:
+    Stack(int size) {
+        capacity = size;
+        arr = new int[capacity];
+        top = -1;
     }
-    stackArr[++top] = value;
-}
 
-// Pop
-void pop() {
-    if (top == -1) {
-        cout << "Stack Underflow\n";
-        return;
+    // Push
+    void push(int value) {
+        if (top == capacity - 1) {
+            cout << "Stack Overflow\n";
+            return;
+        }
+        arr[++top] = value;
     }
-    cout << "Popped: " << stackArr[top--] << endl;
-}
 
-// Peek
-void peek() {
-    if (top == -1) {
-        cout << "Empty stack\n";
-        return;
+    // Pop
+    int pop() {
+        if (top == -1) {
+            cout << "Stack Underflow\n";
+            return -1;
+        }
+        return arr[top--];
     }
-    cout << "Top: " << stackArr[top] << endl;
-}
 
-// Display
-void display() {
-    for (int i = top; i >= 0; i--) {
-        cout << stackArr[i] << endl;
+    // Peek
+    int peek() {
+        if (top == -1) {
+            cout << "Empty Stack\n";
+            return -1;
+        }
+        return arr[top];
     }
-}
 
-// Main
+    // Display
+    void display() {
+        if (top == -1) {
+            cout << "Stack is empty\n";
+            return;
+        }
+
+        for (int i = top; i >= 0; i--) {
+            cout << arr[i] << endl;
+        }
+    }
+
+    ~Stack() {
+        delete[] arr;
+    }
+};
 int main() {
-    push(10);
-    push(20);
-    push(30);
+    Stack s(5);
 
-    display();
-    peek();
-    pop();
-    display();
+    s.push(10);
+    s.push(20);
+    s.push(30);
+
+    cout << "Stack elements:\n";
+    s.display();
+
+    cout << "Top element: " << s.peek() << endl;
+
+    cout << "Popped: " << s.pop() << endl;
+
+    cout << "After pop:\n";
+    s.display();
+
+    return 0;
 }

@@ -1,3 +1,10 @@
+// Binary Tree Traversals
+// Preorder: Root -> Left -> Right
+// Inorder: Left -> Root -> Right
+// Postorder: Left -> Right -> Root
+// Time Complexity: O(n)
+
+
 #include <iostream>
 using namespace std;
 
@@ -16,7 +23,7 @@ Node* createNode(int value) {
     return newNode;
 }
 
-// Inorder Traversal (Left ? Root ? Right)
+// Inorder Traversal (Left -> Root -> Right)
 void inorder(Node* root) {
     if (root == NULL) return;
 
@@ -25,13 +32,22 @@ void inorder(Node* root) {
     inorder(root->right);
 }
 
-// Preorder Traversal (Root ? Left ? Right)
+// Preorder Traversal (Root -> Left -> Right)
 void preorder(Node* root) {
     if (root == NULL) return;
 
     cout << root->data << " ";
     preorder(root->left);
     preorder(root->right);
+}
+
+//Postoder Traversal (Left -> Right -> Root)
+void postorder(Node* root) {
+    if (root == NULL) return;
+
+    postorder(root->left);
+    postorder(root->right);
+    cout << root->data << " ";
 }
 
 int main() {
@@ -48,7 +64,8 @@ int main() {
     cout << "\nInorder Traversal: ";
     inorder(root);
 
-    
+	cout << "\n Postoder Traversal:";
+	postorder(root);
 
     return 0;
 }

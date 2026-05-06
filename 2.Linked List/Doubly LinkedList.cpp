@@ -1,3 +1,6 @@
+/*
+ * Simple Undo/Redo System using Doubly Linked List
+ */
 #include <iostream>
 using namespace std;
 

@@ -5,6 +5,7 @@ using namespace std;
 int main() {
     deque<int> dq;
 
+    // Insert elements
     dq.push_back(10);
     dq.push_back(20);
     dq.push_front(5);
@@ -14,7 +15,8 @@ int main() {
         cout << dq[i] << " ";
     }
     cout << endl;
-
+    
+    // Remove elements safely
     dq.pop_front();
     dq.pop_back();
 

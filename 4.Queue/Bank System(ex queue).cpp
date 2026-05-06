@@ -1,3 +1,11 @@
+// Bank Queue System
+// Data Structure: Queue (FIFO)
+// Time Complexity:
+// push() → O(1)
+// pop() → O(1)
+// front() → O(1)
+// display → O(n)
+
 #include <iostream>
 #include <queue>
 using namespace std;

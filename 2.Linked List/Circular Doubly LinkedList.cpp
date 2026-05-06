@@ -1,3 +1,12 @@
+/*
+ * Circular Doubly Linked List - Browser Navigator
+ * Features:
+ * - Visit page
+ * - Next page
+ * - Previous page
+ * - Delete page
+ * - Show all pages
+ */
 #include <iostream>
 #include <string>
 using namespace std;

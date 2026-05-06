@@ -4,14 +4,14 @@
 #include <algorithm>
 using namespace std;
 
-// ================= NODE =================
+// ================= NODE STRUCTURE =================
 struct Node {
-    int data;
-    Node* left;
-    Node* right;
+    int data;// - data value
+    Node* left;// - pointer to left child
+    Node* right;// - pointer to right child
 };
 
-// Create node
+//  CREATE NEW NODE (This function creates a new node and initializes it)
 Node* createNode(int value) {
     Node* newNode = new Node();
     newNode->data = value;
@@ -19,7 +19,22 @@ Node* createNode(int value) {
     return newNode;
 }
 
-// ================= TRAVERSALS =================
+//  INSERT INTO BST 
+// Inserts value into BST following rules: left < root < right
+Node* insert(Node* root, int value) {
+    if (root == NULL)
+        return createNode(value);
+
+    if (value < root->data)
+        root->left = insert(root->left, value);
+    else if (value > root->data)
+        root->right = insert(root->right, value);
+
+    return root;
+}
+
+// INORDER TRAVERSAL (Left → Root → Right)
+// For BST, this gives sorted output
 void inorder(Node* root) {
     if (root == NULL) return;
 
@@ -28,6 +43,7 @@ void inorder(Node* root) {
     inorder(root->right);
 }
 
+//  PREORDER TRAVERSAL (Root → Left → Right)
 void preorder(Node* root) {
     if (root == NULL) return;
 
@@ -36,39 +52,20 @@ void preorder(Node* root) {
     preorder(root->right);
 }
 
-// ================= SEARCH =================
+//  SEARCH IN BST 
 bool search(Node* root, int key) {
     if (root == NULL) return false;
 
     if (root->data == key) return true;
 
-    return search(root->left, key) ||
-           search(root->right, key);
+    if (key < root->data)
+        return search(root->left, key);
+    else
+        return search(root->right, key);
 }
 
-// ================= COLLECT FOR SORT =================
-void collect(Node* root, vector<int>& arr) {
-    if (root == NULL) return;
-
-    arr.push_back(root->data);
-    collect(root->left, arr);
-    collect(root->right, arr);
-}
-
-void showSorted(Node* root) {
-    vector<int> arr;
-    collect(root, arr);
-
-    sort(arr.begin(), arr.end());
-
-    cout << "Sorted values: ";
-    for (int i = 0; i < arr.size(); i++) {
-        cout << arr[i] << " ";
-    }
-    cout << endl;
-}
-
-// ================= SIMPLE DELETE (replace with deepest idea) =================
+//  DELETE ENTIRE TREE 
+// Deletes all nodes using postorder traversal
 void deleteTree(Node*& root) {
     if (root == NULL) return;
 
@@ -79,42 +76,47 @@ void deleteTree(Node*& root) {
     root = NULL;
 }
 
-// ================= MAIN =================
+// ================= MAIN FUNCTION =================
 int main() {
-    // Manual tree
-    Node* root = createNode(1);
-    root->left = createNode(2);
-    root->right = createNode(3);
-    root->left->left = createNode(4);
-    root->left->right = createNode(5);
+    Node* root = NULL;
+
+    // Creating BST using insert function
+    root = insert(root, 1);
+    insert(root, 2);
+    insert(root, 3);
+    insert(root, 4);
+    insert(root, 5);
 
     int choice, key;
 
     do {
-        cout << "\n===== BINARY TREE MENU =====\n";
-        cout << "1. Inorder Traversal\n";
+        // MENU DISPLAY
+        cout << "\n===== BINARY SEARCH TREE MENU =====\n";
+        cout << "1. Inorder Traversal (Sorted)\n";
         cout << "2. Preorder Traversal\n";
         cout << "3. Search Value\n";
-        cout << "4. Show Sorted Values\n";
-        cout << "5. Delete Tree\n";
-        cout << "6. Exit\n";
+        cout << "4. Delete Tree\n";
+        cout << "5. Exit\n";
         cout << "Choose: ";
         cin >> choice;
 
         switch (choice) {
 
+        // Display sorted BST values
         case 1:
-            cout << "Inorder: ";
+            cout << "Inorder (Sorted): ";
             inorder(root);
             cout << endl;
             break;
 
+        // Show preorder traversal
         case 2:
             cout << "Preorder: ";
             preorder(root);
             cout << endl;
             break;
 
+        // Search a value in BST
         case 3:
             cout << "Enter value to search: ";
             cin >> key;
@@ -125,24 +127,23 @@ int main() {
                 cout << "Not Found\n";
             break;
 
+        // Delete entire tree
         case 4:
-            showSorted(root);
-            break;
-
-        case 5:
             deleteTree(root);
             cout << "Tree deleted\n";
             break;
 
-        case 6:
+        // Exit program
+        case 5:
             cout << "Exit...\n";
             break;
 
+        // Invalid input handling
         default:
             cout << "Invalid choice\n";
         }
 
-    } while (choice != 6);
+    } while (choice != 5);
 
     return 0;
 }
