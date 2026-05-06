@@ -1,5 +1,5 @@
  // Task Scheduler using Priority Queue
- // Data Structure: Max Heap (priority_queue)
+ // Data Structure: priority_queue
  // Time Complexity:
  //   Insert: O(log n)
  //   Remove: O(log n)
