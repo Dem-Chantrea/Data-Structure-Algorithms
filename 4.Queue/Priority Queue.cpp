@@ -1,9 +1,17 @@
- // Task Scheduler using Priority Queue
- // Data Structure: priority_queue
- // Time Complexity:
- //   Insert: O(log n)
- //   Remove: O(log n)
+/* 
+Task Scheduler using Priority Queue
+ Data Structure: priority_queue
+ Time Complexity:
+   Insert: O(log n)
+   Remove: O(log n)
+Key Concept:
+- A Priority Queue is a data structure where each element is assigned a priority.
+- The element with the highest (or lowest) priority is removed first, not based on insertion order.
 
+Conditions:
+- Empty → pq.empty()
+- No fixed full condition (dynamic size, grows automatically)
+*/
 
 #include <iostream>
 #include <queue>
