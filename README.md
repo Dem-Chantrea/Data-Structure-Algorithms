@@ -13,6 +13,11 @@ This repository contains implementations of fundamental Data Structures and Algo
  - Sorting Algorithms (Bubble, Selection, Insertion, Merge, Quick Sort)
  - Searching Algorithms (Linear Search, Binary Search)
 
+### 📋 Real world Example
+  - Student Management System
+  - Invetory System (Stock management)
+  - Library Management System
+
 ## 🎯 Goal
 This repository demonstrates my understanding of core Computer Science fundamentals, including:
 
