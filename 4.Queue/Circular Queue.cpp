@@ -1,4 +1,22 @@
-/* Circle QUEUE
+/* Circular Queue (FIFO)
+
+Description:
+Array-based circular queue that reuses space using wrap-around.
+
+Time Complexity:
+enqueue() → O(1)
+dequeue() → O(1)
+display() → O(n)
+
+Space Complexity: O(n) 
+
+Key Concept:
+(index + 1) % capacity
+
+Conditions:
+Full → (rear + 1) % capacity == front
+Empty → front == -1
+ */
     
 #include <iostream>
 using namespace std;

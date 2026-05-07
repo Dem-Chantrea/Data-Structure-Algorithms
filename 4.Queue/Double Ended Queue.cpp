@@ -1,3 +1,17 @@
+/* Deque (Double-Ended Queue)
+
+Data Structure:
+deque (allows insertion & deletion from both ends)
+
+Time Complexity:
+push_front() → O(1)
+push_back() → O(1)
+pop_front() → O(1)
+pop_back() → O(1)
+
+Space Complexity: O(n)
+*/
+
 #include <iostream>
 #include <deque>
 using namespace std;
